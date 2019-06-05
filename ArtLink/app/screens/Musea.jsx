@@ -14,7 +14,7 @@ export default class Musea extends Component {
         // day chosen by user
         chosenDay: 0, // choose first day by default
         // time chosen by user
-        chosenTime: 0,
+        chosenTime: null,
       }
     
       openMuseum = (museum) => {
