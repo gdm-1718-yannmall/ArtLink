@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const defaultStyles = StyleSheet.create({
     text: {
-        fontFamily: 'Avenir',
+        fontFamily: 'Arial',
     }
 });
 

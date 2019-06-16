@@ -79,3 +79,5 @@ export const musea = [
     times,
   },
 ];
+
+export const users = ['Loki', 'Nina', 'Luci', 'Dirk', 'Levi', 'Lomme', 'Wouter', 'Jelle']

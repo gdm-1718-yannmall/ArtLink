@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Musea, Confirmation } from './screens';
+import { Musea, Group, Confirmation } from './screens';
 
 const AppNavigator = createStackNavigator(
     {
-        Home: Musea,
+        Home: Group,
         confirmation: Confirmation,
     },
     {
