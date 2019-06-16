@@ -4,7 +4,7 @@ import { Musea, Group, Confirmation } from './screens';
 
 const AppNavigator = createStackNavigator(
     {
-        Home: Musea,
+        Home: Group,
         confirmation: Confirmation,
         Group: Group,
     },

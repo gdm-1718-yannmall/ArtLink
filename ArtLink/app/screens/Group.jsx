@@ -1,73 +1,9 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
+import { Text, Image, TouchableOpacity, StyleSheet, Dimensions, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { ButtonGroup, Button } from '../components';
-import { defaultStyles, confStyles } from '../styles';
+import { groupStyles } from '../styles';
 import { users } from '../data';
-
-const { width, height } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-    container: {
-        width: width,
-        height: height- 40,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column'
-
-    },
-
-    content: {
-        width: width - 20,
-        height: height - 40,
-        flex: 1,
-        justifyContent: 'space-between',
-        
-    },
-
-    group: {
-        height: 250,
-        marginTop: 20,
-        paddingLeft: 15,
-        justifyContent: 'flex-start',
-    },
-
-    group__content: {
-        width: '100%',
-        textAlign: 'left',
-        marginBottom: 15,
-        fontSize: 30,
-        fontWeight: 'bold',
-    },
-
-    button: {
-        width: '100%',
-        marginBottom: 15,
-    },
-
-    button__top: {
-        marginTop: 60
-    },
-
-    noMembers: {
-        paddingVertical: 80,
-        textAlign: 'center',
-        color: '#666666'
-    },
-
-    members: {
-        paddingTop: 10,
-        paddingLeft: 10,
-        fontSize: 15,
-    }
-
-
-
-
-
-
-})
 
 export default class Group extends Component {
 
@@ -107,25 +43,32 @@ export default class Group extends Component {
     render() {
         if (this.state.groupMembers.length > 0) {
             return (
-                <View style={styles.container}>
-                    <View style={styles.content}>
+                <View style={groupStyles.container}>
+                    <View style={groupStyles.content}>
                         <View>
-                            <View style={[styles.button, styles.button__top]}>
+                            <View style={[groupStyles.button, groupStyles.button__top]}>
                                 <ButtonGroup disable={this.state.disable} name="INVITE YOUR FRIENDS" pressGroup="" />
                             </View>
-                            <View style={styles.group}>
-                                <Text style={styles.group__content}>Your Group</Text>
-                                {this.state.groupMembers.map((member, i) => <Text style={styles.members} key={i}>{member}</Text>)}                        
+                            <View style={groupStyles.group}>
+                                <Text style={groupStyles.group__content}>Your Group</Text>
+                                {this.state.groupMembers.map((member, i) => {
+                                    return(
+                                        <View style={groupStyles.member}>
+                                            <Image style={groupStyles.picture} source={{uri: member.picture}} />
+                                            <Text style={groupStyles.name} key={i}>{member.name}</Text>
+                                        </View>
+                                    )
+                                })}                        
                             </View>
-                            <View style={styles.button}>
+                            <View style={groupStyles.button}>
                                 <ButtonGroup disable={this.state.disable} name="FIND NEW PEOPLE" pressGroup={this.addUserToGroup} />
                             </View>
                         </View>
                         <View>
-                            <View style={styles.button}>
+                            <View style={groupStyles.button}>
                                 <ButtonGroup disable={true} name="CONFIRM GROUP" pressGroup="" />
                             </View>
-                            <View style={styles.button}>
+                            <View style={groupStyles.button}>
                                 <ButtonGroup disable={false} name="LEAVE GROUP" pressGroup={this.leaveGroup} />
                             </View>
                         </View>
@@ -135,25 +78,25 @@ export default class Group extends Component {
         }
         else {
             return (
-                <View style={styles.container}>
-                    <View style={styles.content}>
+                <View style={groupStyles.container}>
+                    <View style={groupStyles.content}>
                         <View>
-                            <View style={[styles.button, styles.button__top]}>
+                            <View style={[groupStyles.button, groupStyles.button__top]}>
                                 <ButtonGroup disable={this.state.disable} name="INVITE YOUR FRIENDS" pressGroup="" />
                             </View>
-                            <View style={styles.group}>
-                                <Text style={styles.group__content}>Your Group</Text>
-                                <Text style={styles.noMembers}>No members yet</Text>
+                            <View style={groupStyles.group}>
+                                <Text style={groupStyles.group__content}>Your Group</Text>
+                                <Text style={groupStyles.noMembers}>No members yet</Text>
                             </View>
-                            <View style={styles.button}>
+                            <View style={groupStyles.button}>
                                 <ButtonGroup disable={false} name="FIND NEW PEOPLE" pressGroup={this.addUserToGroup} />
                             </View>
                         </View>
                         <View>
-                            <View style={styles.button}>
+                            <View style={groupStyles.button}>
                                 <ButtonGroup disable={true} name="CONFIRM GROUP" pressGroup="" />
                             </View>
-                            <View style={styles.button}>
+                            <View style={groupStyles.button}>
                                 <ButtonGroup disable={true} name="LEAVE GROUP" pressGroup={this.leaveGroup} />
                             </View>
                         </View>

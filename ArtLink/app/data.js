@@ -80,4 +80,37 @@ export const musea = [
   },
 ];
 
-export const users = ['Loki', 'Nina', 'Luci', 'Dirk', 'Levi', 'Lomme', 'Wouter', 'Jelle']
+export const users = [
+  {
+    name: 'Bram',
+    picture: 'https://randomuser.me/api/portraits/men/81.jpg'
+  }, 
+  {
+    name: 'Ramsay',
+    picture: 'https://randomuser.me/api/portraits/men/81.jpg'
+  }, 
+  {
+    name: 'Lucy',
+    picture: 'https://randomuser.me/api/portraits/women/67.jpg'
+  }, 
+  {
+    name: 'Dirk',
+    picture: 'https://randomuser.me/api/portraits/men/81.jpg'
+  }, 
+  {
+    name: 'Chantal',
+    picture: 'https://randomuser.me/api/portraits/women/67.jpg'
+  }, 
+  {
+    name: 'Ruby',
+    picture: 'https://randomuser.me/api/portraits/women/67.jpg'
+  }, 
+  {
+    name: 'Nikki',
+    picture: 'https://randomuser.me/api/portraits/men/81.jpg'
+  }, 
+  {
+    name: 'Lena',
+    picture: 'https://randomuser.me/api/portraits/women/67.jpg'
+  }
+]
