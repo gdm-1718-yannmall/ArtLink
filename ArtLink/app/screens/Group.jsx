@@ -28,19 +28,22 @@ const styles = StyleSheet.create({
 
     group: {
         height: 250,
+        marginTop: 20,
+        paddingLeft: 15,
         justifyContent: 'flex-start',
     },
 
     group__content: {
         width: '100%',
         textAlign: 'left',
-        marginBottom: 15
+        marginBottom: 15,
+        fontSize: 30,
+        fontWeight: 'bold',
     },
 
     button: {
         width: '100%',
         marginBottom: 15,
-
     },
 
     button__top: {
@@ -48,10 +51,18 @@ const styles = StyleSheet.create({
     },
 
     noMembers: {
-        paddingVertical: 100,
+        paddingVertical: 80,
         textAlign: 'center',
         color: '#666666'
+    },
+
+    members: {
+        paddingTop: 10,
+        paddingLeft: 10,
+        fontSize: 15,
     }
+
+
 
 
 
@@ -65,22 +76,32 @@ export default class Group extends Component {
         disable: false,
     }
 
-    something = () => {
+    addUserToGroup = () => {
         user = users[Math.floor(Math.random() * users.length)];
         console.log(user);
 
         if (this.state.groupMembers.length < 5) {
-            this.setState({groupMembers: this.state.groupMembers.concat(user)});
+            this.setState(
+                { groupMembers: this.state.groupMembers.concat(user) }
+            );
             console.log(this.state.groupMembers.length);
             if (this.state.groupMembers.length == 4) {
-                this.setState({disable: true});
+                this.setState(
+                    { disable: true }
+                );
             }
         }
 
         console.log(this.state.disable);
     }
-    something2 = () => {
-        alert('Joined Group');
+    leaveGroup = () => {
+        this.setState(
+            { 
+                groupMembers: [],
+                disable: false
+            
+            }
+        )
     }
 
     render() {
@@ -90,20 +111,23 @@ export default class Group extends Component {
                     <View style={styles.content}>
                         <View>
                             <View style={[styles.button, styles.button__top]}>
-                                <ButtonGroup disable={this.state.disable} name="INVITE YOUR FRIENDS" doSomethingGroup="" />
+                                <ButtonGroup disable={this.state.disable} name="INVITE YOUR FRIENDS" pressGroup="" />
                             </View>
                             <View style={styles.group}>
                                 <Text style={styles.group__content}>Your Group</Text>
-                                {this.state.groupMembers.map((member, i) => <Text key={i}>{member}</Text>)}
-                                <View style={styles.button}>
-                                    <ButtonGroup disable={this.state.disable} name="FIND NEW PEOPLE" doSomethingGroup={this.something} />
-                                </View>
+                                {this.state.groupMembers.map((member, i) => <Text style={styles.members} key={i}>{member}</Text>)}                        
+                            </View>
+                            <View style={styles.button}>
+                                <ButtonGroup disable={this.state.disable} name="FIND NEW PEOPLE" pressGroup={this.addUserToGroup} />
                             </View>
                         </View>
-                        
-                        <View style={styles.button}>
-                            <ButtonGroup disable={true} name="JOIN GROUP" doSomethingGroup={this.something2} />
-                            <ButtonGroup disable={true} name="LEAVE GROUP" doSomethingGroup={this.something2} />
+                        <View>
+                            <View style={styles.button}>
+                                <ButtonGroup disable={true} name="CONFIRM GROUP" pressGroup="" />
+                            </View>
+                            <View style={styles.button}>
+                                <ButtonGroup disable={false} name="LEAVE GROUP" pressGroup={this.leaveGroup} />
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -115,26 +139,25 @@ export default class Group extends Component {
                     <View style={styles.content}>
                         <View>
                             <View style={[styles.button, styles.button__top]}>
-                                <ButtonGroup disable={this.state.disable} name="INVITE YOUR FRIENDS" doSomethingGroup={this.something} />
+                                <ButtonGroup disable={this.state.disable} name="INVITE YOUR FRIENDS" pressGroup="" />
                             </View>
                             <View style={styles.group}>
                                 <Text style={styles.group__content}>Your Group</Text>
                                 <Text style={styles.noMembers}>No members yet</Text>
                             </View>
                             <View style={styles.button}>
-                                <ButtonGroup disable={this.state.disable} name="FIND NEW PEOPLE" doSomethingGroup={this.something} />
+                                <ButtonGroup disable={false} name="FIND NEW PEOPLE" pressGroup={this.addUserToGroup} />
                             </View>
                         </View>
                         <View>
                             <View style={styles.button}>
-                                <ButtonGroup disable={true} name="JOIN GROUP" doSomethingGroup={this.something2} />
+                                <ButtonGroup disable={true} name="CONFIRM GROUP" pressGroup="" />
                             </View>
                             <View style={styles.button}>
-                                <ButtonGroup disable={true} name="LEAVE GROUP" doSomethingGroup={this.something2} />
+                                <ButtonGroup disable={true} name="LEAVE GROUP" pressGroup={this.leaveGroup} />
                             </View>
                         </View>
                     </View>
-                    
                 </View>
             )
         }

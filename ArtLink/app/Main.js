@@ -4,8 +4,9 @@ import { Musea, Group, Confirmation } from './screens';
 
 const AppNavigator = createStackNavigator(
     {
-        Home: Group,
+        Home: Musea,
         confirmation: Confirmation,
+        Group: Group,
     },
     {
       defaultNavigationOptions: () => ({

@@ -19,8 +19,8 @@ const buttonStyles = StyleSheet.create({
     
 });
 
-const ButtonGroup = ({ doSomethingGroup, name, disable}) => (
-    <TouchableOpacity disabled={disable} style={buttonStyles.button} onPress={doSomethingGroup}>
+const ButtonGroup = ({ pressGroup, name, disable}) => (
+    <TouchableOpacity disabled={disable} style={buttonStyles.button} onPress={pressGroup}>
         <Text style={buttonStyles.text}>{name}</Text>
     </TouchableOpacity>
 )

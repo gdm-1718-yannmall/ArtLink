@@ -24,7 +24,7 @@ export default class Confirmation extends Component {
         <TouchableOpacity
           style={confStyles.buttonContainer}
           // Go back when pressed
-          onPress={() => this.props.navigation.goBack() } // change to new react native navigation
+          onPress={() => this.props.navigation.navigate('Group') } // change to new react native navigation
         >
           <Text style={confStyles.button}>Done</Text>
         </TouchableOpacity> 
