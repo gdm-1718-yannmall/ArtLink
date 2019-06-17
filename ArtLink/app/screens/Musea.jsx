@@ -50,7 +50,7 @@ export default class Musea extends Component {
               alert('Please select a time');
           } else {
               this.closeMuseum();
-              this.props.navigation.navigate('confirmation', {code: Math.random().toString(36).substring(6).toUpperCase()});
+              this.props.navigation.navigate('confirmation');
           }
       }
 

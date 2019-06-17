@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Musea, Confirmation } from './screens';
+import { Musea, Group, Confirmation } from './screens';
 
 const AppNavigator = createStackNavigator(
     {
         Home: Musea,
-        confirmation: Confirmation,
+        confirmation: Group,
+        Group: Group,
+        confirmGroup: Confirmation,
     },
     {
       defaultNavigationOptions: () => ({

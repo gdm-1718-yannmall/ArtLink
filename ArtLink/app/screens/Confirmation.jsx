@@ -12,19 +12,19 @@ export default class Confirmation extends Component {
 
   render() {
     const { navigation } = this.props;
-    const code = JSON.stringify(navigation.getParam('code'));
+    const group = JSON.stringify(navigation.getParam('group'));
 
     return (
       <View style={confStyles.container}>
-        <Text style={confStyles.header}>Your confirmation code</Text>
-        <Text style={confStyles.code}>{code}</Text>
+        <Text style={confStyles.header}>You are added to the following group</Text>
+        <Text style={confStyles.code}>{group}</Text>
 
         
 
         <TouchableOpacity
           style={confStyles.buttonContainer}
           // Go back when pressed
-          onPress={() => this.props.navigation.goBack() } // change to new react native navigation
+          onPress={() => this.props.navigation.navigate('Group') } // change to new react native navigation
         >
           <Text style={confStyles.button}>Done</Text>
         </TouchableOpacity> 
