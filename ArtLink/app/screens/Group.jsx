@@ -40,6 +40,10 @@ export default class Group extends Component {
         )
     }
 
+    confirmGroup = () => {       
+                this.props.navigation.navigate('confirmGroup', {group: this.state.groupMembers});
+    }
+
     render() {
         if (this.state.groupMembers.length > 0) {
             return (
@@ -66,7 +70,7 @@ export default class Group extends Component {
                         </View>
                         <View>
                             <View style={groupStyles.button}>
-                                <ButtonGroup disable={true} name="CONFIRM GROUP" pressGroup="" />
+                                <ButtonGroup disable={false} name="CONFIRM GROUP" pressGroup={this.confirmGroup} />
                             </View>
                             <View style={groupStyles.button}>
                                 <ButtonGroup disable={false} name="LEAVE GROUP" pressGroup={this.leaveGroup} />
